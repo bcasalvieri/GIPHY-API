@@ -105,10 +105,21 @@ function displayGIFsInfo() {
 
 
 // Add event listener for when a add-gif button is clicked
+$("#add-gif").on("click", function(event) {
+  
   // Add event.preventDefault()
+  event.preventDefault();
+
   // Grab val() of #gif-input and store in variable
+  var topic = $("#gif-input").val().trim();
+
   // Push to topics array
+  topics.push(topic);
+
   // Call renderButtons()
+  renderButtons();
+
+});
 
 // Add event listener for when a gif is clicked
   // Grab val of "data-state" attribute of gif clicked
