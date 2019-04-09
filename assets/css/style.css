@@ -10,13 +10,18 @@ body {
 
 h1 {
   font-family: 'Fredericka the Great', cursive;
-  width: 95%
+  font-size: 4rem;
 }
 
 .card-img-top {
-  max-height: 250px;
+  height: 100%;
 }
 
 .card {
-  border: none;
+  /* border: none; */
+}
+
+a, a:hover {
+  text-decoration: none;
+  color: white;
 }

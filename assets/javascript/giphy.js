@@ -77,7 +77,7 @@ function displayGIFsInfo() {
       var $gifDiv = $("<div>").addClass("col-12 col-sm-6 col-xl-4 mb-1 mb-lg-3 d-flex align-items-stretch justify-content-center");
       
       // Create a div to hold GIF with a class of "card"
-      var $cardDiv = $("<div>").addClass("card");
+      var $cardDiv = $("<div>").addClass("card w-100");
   
       // Create an image tag
       // Add src of still url
@@ -109,9 +109,19 @@ function displayGIFsInfo() {
       var $ratingP = $("<p>")
         .addClass("text-center mb-0")
         .text("Rating: " + results[i].rating);
+
+      // Create download button
+      var $download = $("<button>")
+        .addClass("btn btn-primary")
+
+      var $downloadLink = $("<a>")
+        .attr("href", results[i].images.fixed_height.mp4)
+        .attr("download", '')
+        .text("Download")
+        .appendTo($download);
       
       // Append $title and $ratingP to $infoDiv
-      $infoDiv.append($title, $ratingP);
+      $infoDiv.append($title, $ratingP, $download);
   
       // Append $infoDiv to GIF div
       $cardDiv.append($infoDiv);
