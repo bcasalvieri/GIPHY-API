@@ -147,28 +147,48 @@ $("#add-gif").on("click", function(event) {
 
 });
 
-// Add event listener for when a gif is clicked
-$(document).on("click", ".gif", function() {
+// Add event listener for when mouse enters gif
+$(document).on("mouseenter", ".gif", function() {
 
-  // Grab val of "data-state" attribute of gif clicked
+  // change "src" to animate url
+  $(this).attr("src", $(this).attr("data-animate"));
+  // change "data-state" to "animate"
+  $(this).attr("data-state", "animate");
+
+});
+
+// Add event listener for when mouse leaves gif
+$(document).on("mouseleave", ".gif", function() {
+
+  // change "src" to still url
+  $(this).attr("src", $(this).attr("data-still"));
+  // change "data-state" to "still"
+  $(this).attr("data-state", "still");
+
+});
+
+// Add event listener for when gif is clicked
+$(document).on("click", ".gif", function() {
+  
+  // Grab "data-state" attribute
   var state = $(this).attr("data-state");
 
-  // If state = "still"
   if (state === "still") {
     // change "src" to animate url
-    $(this).attr("src", $(this).attr("data-animate"))
+    $(this).attr("src", $(this).attr("data-animate"));
     // change "data-state" to "animate"
-    $(this).attr("data-state", "animate")
+    $(this).attr("data-state", "animate");
   }
-  // Else
   else {
     // change "src" to still url
-    $(this).attr("src", $(this).attr("data-still"))
+    $(this).attr("src", $(this).attr("data-still"));
     // change "data-state" to "still"
-    $(this).attr("data-state", "still")
+    $(this).attr("data-state", "still");
   };
 
 });
+
+
 
 // Add event listener when #clear button is clicked
 $("#clear").on("click", function() {
