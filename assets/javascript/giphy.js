@@ -74,7 +74,7 @@ function displayGIFsInfo() {
     for (var i = 0; i < results.length; i++) {
 
       // Add div with class that sets size
-      var $gifDiv = $("<div>").addClass("col-12 col-md-6 col-xl-4 mb-5 d-flex align-items-stretch");
+      var $gifDiv = $("<div>").addClass("col-12 col-sm-6 col-xl-4 mb-1 d-flex align-items-stretch justify-content-center");
       
       // Create a div to hold GIF with a class of "card"
       var $cardDiv = $("<div>").addClass("card");
@@ -90,7 +90,7 @@ function displayGIFsInfo() {
         .attr("src", results[i].images.fixed_height_still.url)
         .attr("data-still", results[i].images.fixed_height_still.url)
         .attr("data-animate", results[i].images.fixed_height.url)
-        .addClass("gif card-img-top img-fluid")
+        .addClass("gif card-img-top")
         .appendTo($cardDiv);
   
       // Create a rating div with class of "card-body"
