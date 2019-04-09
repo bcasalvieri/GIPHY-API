@@ -90,6 +90,7 @@ function displayGIFsInfo() {
         .attr("src", results[i].images.fixed_height_still.url)
         .attr("data-still", results[i].images.fixed_height_still.url)
         .attr("data-animate", results[i].images.fixed_height.url)
+        .attr("data-state", "still")
         .addClass("gif card-img-top img-fluid")
         .appendTo($cardDiv);
   
