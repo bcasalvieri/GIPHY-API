@@ -10,6 +10,7 @@ body {
 
 h1 {
   font-family: 'Fredericka the Great', cursive;
+  width: 95%
 }
 
 .card-img-top {
@@ -18,8 +19,4 @@ h1 {
 
 .card {
   border: none;
-}
-
-.left-column {
-  width: 90%;
 }
