@@ -48,27 +48,28 @@ function renderButtons() {
       .addClass("btn btn-secondary gif-button m-1")
       .attr("data-topic", topics[i])
       .text(topics[i])
-      .appendTo("#buttons")
+      .appendTo("#buttons");
   };
 };
 
-renderButtons();
-
-
 // displayGIFsInfo function re-renders to HTML to display appropriate content
 function displayGIFsInfo() {
+
   // Create variable reation and get from attribute data-reaction
+  var topic = $(this).attr("data-reaction");
 
   // Create queryURL
+  var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic + "&limit=10&api_key=ibdYlpIAmQD4O4AICfuKUURluf9HMssh"
 
   // Create AJAX call for specific gif button being clicked
   $.ajax({
     url: queryURL,
     method: "GET"
-  }), then(function(response) {
+  }).then(function(response) {
+    console.log(response)
+
     // Create a div to hold GIF with a class of "card"
-
-
+    var $gifDiv = $("<div>").addClass("card");
 
     // Create an image tag
     // Add src of still url
@@ -77,17 +78,27 @@ function displayGIFsInfo() {
     // Add attribute "data-state" = "still"
     // Add class of "gif card-img-top"
     // Append to GIF div
+    var $gifImage = $("<img>")
+      .attr("src", response.data[i].images.fixed_height_still.url)
+      .attr("data-still", response.data[i].images.fixed_height_still.url)
+      .attr("data-animate", response.data[i].images.fixed_height.url)
+      .addClass("gif card-img-top")
+      .appendTo($gifDiv);
 
-    // Create a ratings div with class of "card-body"
+    // Create a rating div with class of "card-body"
+    var $ratingDiv = $("<div>").addClass("card-body");
+
     // Create a p tag
     // Add text of Rating from response
-    
+    var $ratingP = $("<p>")
+      .text("Rating: " + response.data[i].rating)
+      .appendTo($ratingDiv)
 
-    // Append image tag and p tag to GIF div
-
+    // Append $ratingDiv to GIF div
+    $gifDiv.append($ratingDiv)
 
     // Prepend $gifDiv to #gifs-appear-here on page
-
+    $("gifs-appear-here").append($gifDiv)
 
   });
 };
@@ -107,3 +118,6 @@ function displayGIFsInfo() {
   // Else
     // change "src" to still url
     // change "data-state" to "still"
+
+// Call renderButtons function to display the initial buttons
+renderButtons();
