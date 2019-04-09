@@ -1,7 +1,15 @@
+body {
+  font-family: 'Work Sans', sans-serif;
+}
+
 .page-wrapper {
   width: 95%;
   max-width: 1200px;
   margin: 20px auto;
+}
+
+h1 {
+  font-family: 'Fredericka the Great', cursive;
 }
 
 .card-img-top {
