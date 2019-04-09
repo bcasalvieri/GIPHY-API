@@ -4,13 +4,36 @@
 // Create topics array
 var topics = [
   "eye roll",
-  ""
+  "face palm",
+  "happy",
+  "high five",
+  "lol",
+  "sad face",
+  "shrug",
+  "thumbs up",
+  "wink",
+  "hair flip",
+  "applause",
+  "agree",
+  "confused",
+  "hello",
+  "mic drop",
+  "crying",
+  "disgusted",
+  "embarrassed",
+  "sigh",
+  "slow clap",
+  "thumbs down",
+  "smh",
+  "fist bump",
+  "lol",
+  "you got this"
 ]
 
 // Create renderButtons function
 function renderButtons() {
 
-  // empty #buttons div
+  // Empty #buttons div
   $("#buttons").empty();
 
   // Loop through array of gifs
@@ -21,10 +44,15 @@ function renderButtons() {
     // Add attribute "data-topic" = topic[i]
     // Add text = topic[i]
     // Append to #buttons div
-    
-
+    var $button = $("<button>")
+      .addClass("btn btn-secondary gif-button m-1")
+      .attr("data-topic", topics[i])
+      .text(topics[i])
+      .appendTo("#buttons")
   };
 };
+
+renderButtons();
 
 
 // displayGIFsInfo function re-renders to HTML to display appropriate content
