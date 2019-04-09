@@ -73,8 +73,11 @@ function displayGIFsInfo() {
 
     for (var i = 0; i < results.length; i++) {
 
+      // Add div with class that sets size
+      var $gifDiv = $("<div>").addClass("col-12 col-md-6 col-xl-4 mb-5 d-flex align-items-stretch");
+      
       // Create a div to hold GIF with a class of "card"
-      var $gifDiv = $("<div>").addClass("card col-4");
+      var $cardDiv = $("<div>").addClass("card");
   
       // Create an image tag
       // Add src of still url
@@ -88,22 +91,26 @@ function displayGIFsInfo() {
         .attr("data-still", results[i].images.fixed_height_still.url)
         .attr("data-animate", results[i].images.fixed_height.url)
         .addClass("gif card-img-top img-fluid")
-        .appendTo($gifDiv);
+        .appendTo($cardDiv);
   
       // Create a rating div with class of "card-body"
-      var $ratingDiv = $("<div>").addClass("card-body");
+      var $ratingDiv = $("<div>").addClass("card-body d-flex flex-column py-1 px-0");
   
       // Create a p tag
       // Add text of Rating from response
       var $ratingP = $("<p>")
+        .addClass("text-center mb-0 mt-auto")
         .text("Rating: " + results[i].rating)
-        .appendTo($ratingDiv)
+        .appendTo($ratingDiv);
   
       // Append $ratingDiv to GIF div
-      $gifDiv.append($ratingDiv)
+      $cardDiv.append($ratingDiv);
+
+      // Append $cardDiv to $gifDiv
+      $gifDiv.append($cardDiv);
   
       // Prepend $gifDiv to #gifs-appear-here on page
-      $("#gifs-appear-here").append($gifDiv)
+      $("#gifs-appear-here").prepend($gifDiv);
 
     };
   });
@@ -148,7 +155,19 @@ $(document).on("click", ".gif", function() {
     $(this).attr("data-state", "still")
   };
 
-})
+});
+
+// Add event listener when #clear button is clicked
+$("#clear").on("click", function() {
+  
+  // Clear gifs off page
+  $("#gifs-appear-here").empty();
+
+  // Clear search field
+  $("#gif-input").val("");
+
+});
+
 
 // Add click event listeners to all elements with class of "gif-button"
 $(document).on("click", ".gif-button", displayGIFsInfo)
