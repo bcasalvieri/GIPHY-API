@@ -74,7 +74,7 @@ function displayGIFsInfo() {
     for (var i = 0; i < results.length; i++) {
 
       // Add div with class that sets size
-      var $gifDiv = $("<div>").addClass("col-12 col-sm-6 col-xl-4 mb-1 d-flex align-items-stretch justify-content-center");
+      var $gifDiv = $("<div>").addClass("col-12 col-sm-6 col-xl-4 mb-1 mb-lg-3 d-flex align-items-stretch justify-content-center");
       
       // Create a div to hold GIF with a class of "card"
       var $cardDiv = $("<div>").addClass("card");
@@ -90,21 +90,30 @@ function displayGIFsInfo() {
         .attr("src", results[i].images.fixed_height_still.url)
         .attr("data-still", results[i].images.fixed_height_still.url)
         .attr("data-animate", results[i].images.fixed_height.url)
-        .addClass("gif card-img-top")
+        .addClass("gif card-img-top img-fluid")
         .appendTo($cardDiv);
   
-      // Create a rating div with class of "card-body"
-      var $ratingDiv = $("<div>").addClass("card-body d-flex flex-column py-1 px-0");
+      // Create an info div with class of "card-body"
+      var $infoDiv = $("<div>").addClass("card-body d-flex flex-column py-1 px-0");
   
+      // Create an h5 tag
+      // Add class of "card-title"
+      // Add text from response
+      var $title = $("<h5>")
+        .addClass("card-title text-center")
+        .text(results[i].title);
+
       // Create a p tag
       // Add text of Rating from response
       var $ratingP = $("<p>")
-        .addClass("text-center mb-0 mt-auto")
-        .text("Rating: " + results[i].rating)
-        .appendTo($ratingDiv);
+        .addClass("text-center mb-0 ")
+        .text("Rating: " + results[i].rating);
+      
+      // Append $title and $ratingP to $infoDiv
+      $infoDiv.append($title, $ratingP);
   
-      // Append $ratingDiv to GIF div
-      $cardDiv.append($ratingDiv);
+      // Append $infoDiv to GIF div
+      $cardDiv.append($infoDiv);
 
       // Append $cardDiv to $gifDiv
       $gifDiv.append($cardDiv);
