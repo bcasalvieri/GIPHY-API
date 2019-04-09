@@ -100,13 +100,13 @@ function displayGIFsInfo() {
       // Add class of "card-title"
       // Add text from response
       var $title = $("<h5>")
-        .addClass("card-title text-center")
+        .addClass("card-title text-center mb-0")
         .text(results[i].title);
 
       // Create a p tag
       // Add text of Rating from response
       var $ratingP = $("<p>")
-        .addClass("text-center mb-0 ")
+        .addClass("text-center mb-0")
         .text("Rating: " + results[i].rating);
       
       // Append $title and $ratingP to $infoDiv
@@ -140,6 +140,9 @@ $("#add-gif").on("click", function(event) {
 
   // Call renderButtons()
   renderButtons();
+
+  // Clear #gif-input textbox
+  $("#gif-input").val("");
 
 });
 
